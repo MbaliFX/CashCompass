@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:padding="40dp"
-    tools:context=".register">
+    tools:context=".Register">
 
     <!--starts here-->
         <ImageView

@@ -48,7 +48,7 @@ class login : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, register::class.java)) // ✅ Use actual class reference, not a string
+                        startActivity(Intent(this, Register::class.java)) // ✅ Use actual class reference, not a string
                         finish()
                     } else {
                         Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
@@ -58,7 +58,7 @@ class login : AppCompatActivity() {
 
         // Sign up redirect
         signUpText.setOnClickListener {
-            startActivity(Intent(this, register::class.java))
+            startActivity(Intent(this, Register::class.java))
         }
 
         // Forgot password logic
