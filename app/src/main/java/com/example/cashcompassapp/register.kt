@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.firebase.FirebaseApp
@@ -55,7 +56,16 @@ class Register : AppCompatActivity() {
 
         // Cancel button click
         btnCancel.setOnClickListener {
-            startActivity(Intent(this, login::class.java)) // assuming login screen is where you want to go
+            startActivity(Intent(this, Register::class.java)) // assuming login screen is where you want to go
+            finish()
+        }
+
+        //redirect to login page
+        val loginText = findViewById<TextView>(R.id.loginText)
+        //set the onClick action to the button
+        loginText?.setOnClickListener {
+            val intent = Intent(this, login::class.java)
+            startActivity(intent)
             finish()
         }
     }

@@ -48,7 +48,7 @@ class login : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, Register::class.java)) // ✅ Use actual class reference, not a string
+                        startActivity(Intent(this, NavigationActivity::class.java)) // ✅ Use actual class reference, not a string
                         finish()
                     } else {
                         Toast.makeText(this, "Login failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
