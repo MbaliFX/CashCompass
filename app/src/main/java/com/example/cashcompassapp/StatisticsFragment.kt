@@ -1,59 +1,76 @@
 package com.example.cashcompassapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.fragment.app.Fragment
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [StatisticsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class StatisticsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var pieChart: PieChart
+    private lateinit var badge: ImageView
+    private var minBudget = 0
+    private var maxBudget = 0
+    private var totalExpense = 0f
+    private val expenseEntries = ArrayList<PieEntry>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this fragment (create fragment_statistics.xml)
         return inflater.inflate(R.layout.fragment_statistics, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment StatisticsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StatisticsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val minInput = view.findViewById<EditText>(R.id.minBudgetInput)
+        val maxInput = view.findViewById<EditText>(R.id.maxBudgetInput)
+        val setBudgetBtn = view.findViewById<Button>(R.id.setBudgetBtn)
+        val expenseInput = view.findViewById<EditText>(R.id.expenseInput)
+        val addExpenseBtn = view.findViewById<Button>(R.id.addExpenseBtn)
+        pieChart = view.findViewById(R.id.pieChart)
+        badge = view.findViewById(R.id.congratsBadge)
+
+        badge.visibility = View.GONE
+
+        setBudgetBtn.setOnClickListener {
+            minBudget = minInput.text.toString().toIntOrNull() ?: 0
+            maxBudget = maxInput.text.toString().toIntOrNull() ?: 0
+            Toast.makeText(requireContext(), "Budget Set!", Toast.LENGTH_SHORT).show()
+        }
+
+        addExpenseBtn.setOnClickListener {
+            val expense = expenseInput.text.toString().toFloatOrNull()
+            if (expense != null) {
+                totalExpense += expense
+                expenseEntries.add(PieEntry(expense, "Item ${expenseEntries.size + 1}"))
+                updateChart()
+
+                if (totalExpense >= maxBudget) {
+                    badge.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Congratulations! Max Budget Reached!", Toast.LENGTH_LONG).show()
                 }
+            } else {
+                Toast.makeText(requireContext(), "Enter a valid expense", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun updateChart() {
+        val dataSet = PieDataSet(expenseEntries, "Expenses")
+        dataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
+        val pieData = PieData(dataSet)
+        pieChart.data = pieData
+        pieChart.invalidate()
     }
 }
