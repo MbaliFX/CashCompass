@@ -236,6 +236,193 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Planned Payments Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Planned Payments"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_box"
+                    android:padding="12dp">
+
+                    <!-- Sample Payment 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="6dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Rent - Due in 5 days" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="R3,000"
+                            android:gravity="end"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Sample Payment 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="6dp"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Netflix - Due in 3 days" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="R199"
+                            android:gravity="end"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <!-- Bill Tracker Section -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upcoming Bills"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="8dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/rounded_box2"
+                        android:padding="12dp">
+
+                        <!-- Sample Bill 1 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="6dp"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Electricity - Due in 2 days" />
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="R400"
+                                android:gravity="end"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Sample Bill 2 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="6dp"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="DSTV - Due in 5 days" />
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="R250"
+                                android:gravity="end"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Manage Bills Button -->
+                        <Button
+                            android:id="@+id/btnManageBills"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="12dp"
+                            android:text="Manage Bills"
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="@color/my_blue"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="8dp"/>
+                    </LinearLayout>
+
+                    <!-- View All Button -->
+                    <Button
+                        android:id="@+id/btnViewAllPlannedPayments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
+                        android:text="View All"
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="@color/my_blue"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"/>
+                </LinearLayout>
+
+
+                <!-- Repeat for each balance item -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="4dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Opening Balance" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="R0.00"
+                        android:gravity="end" />
+                </LinearLayout>
+
+                <!-- You can duplicate the layout above and change the labels to: -->
+                <!-- Ending Balance, Income, Expenses, Total -->
+
+            </LinearLayout>
+
+
         </LinearLayout>
     </ScrollView>
 
